@@ -7,8 +7,8 @@ import java.io.Serializable
 
 @Entity(tableName = "note_table")
 class NoteModel(
-    @ColumnInfo(name = "title_col") var title : String,
-    @ColumnInfo(name = "description_col") var description : String
+    @ColumnInfo(name = "title_col") var title: String,
+    @ColumnInfo(name = "description_col") var description: String
 ) : Serializable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "note_id_col")

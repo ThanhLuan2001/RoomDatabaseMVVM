@@ -10,15 +10,16 @@ import com.example.room_mvvm.model.NoteModel
 @Database(entities = [NoteModel::class], version = 1)
 abstract class NoteDatabase : RoomDatabase() {
 
-    abstract fun getNoteDAO() : NoteDAO
+    abstract fun getNoteDAO(): NoteDAO
 
-    companion object{
+    companion object {
         @Volatile
-        private var instance : NoteDatabase? = null
+        private var instance: NoteDatabase? = null
 
-        fun getInstance(context: Context) : NoteDatabase{
-            if (instance==null){
-                instance = Room.databaseBuilder(context,NoteDatabase::class.java,"note_database").build()
+        fun getInstance(context: Context): NoteDatabase {
+            if (instance == null) {
+                instance =
+                    Room.databaseBuilder(context, NoteDatabase::class.java, "note_database").build()
             }
             return instance!!
         }

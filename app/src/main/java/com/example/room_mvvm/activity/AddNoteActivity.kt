@@ -1,13 +1,12 @@
 package com.example.room_mvvm.activity
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.room_mvvm.R
-import com.example.room_mvvm.database.NoteDatabase
 import com.example.room_mvvm.model.NoteModel
 import com.example.room_mvvm.view_model.NoteViewModel
 
@@ -16,8 +15,9 @@ class AddNoteActivity : AppCompatActivity() {
     lateinit var edtDescription: EditText
     lateinit var btnAdd: Button
 
-    private val noteViewModel : NoteViewModel by lazy {
-        ViewModelProvider(this,
+    private val noteViewModel: NoteViewModel by lazy {
+        ViewModelProvider(
+            this,
             NoteViewModel.NoteViewModelFactory(this.application)
         )[NoteViewModel::class.java]
     }
@@ -31,7 +31,7 @@ class AddNoteActivity : AppCompatActivity() {
         btnAdd = findViewById(R.id.btn_add)
 
         btnAdd.setOnClickListener {
-            val noteModel = NoteModel(edtTitle.text.toString(),edtDescription.text.toString())
+            val noteModel = NoteModel(edtTitle.text.toString(), edtDescription.text.toString())
             noteViewModel.insertNote(noteModel)
             finish()
         }

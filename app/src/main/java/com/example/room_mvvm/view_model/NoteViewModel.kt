@@ -10,25 +10,25 @@ import com.example.room_mvvm.repository.NoteRepository
 import kotlinx.coroutines.launch
 
 class NoteViewModel(application: Application) : ViewModel() {
-    private val noteRepository : NoteRepository = NoteRepository(application)
+    private val noteRepository: NoteRepository = NoteRepository(application)
 
-    fun insertNote(noteModel : NoteModel) = viewModelScope.launch {
+    fun insertNote(noteModel: NoteModel) = viewModelScope.launch {
         noteRepository.insertNote(noteModel)
     }
 
-    fun updateNote(noteModel : NoteModel) = viewModelScope.launch {
+    fun updateNote(noteModel: NoteModel) = viewModelScope.launch {
         noteRepository.updateNote(noteModel)
     }
 
-    fun deleteNote(noteModel : NoteModel) = viewModelScope.launch {
+    fun deleteNote(noteModel: NoteModel) = viewModelScope.launch {
         noteRepository.deleteNote(noteModel)
     }
 
-    fun getAllNote() : LiveData<List<NoteModel>> = noteRepository.getAllNote()
+    fun getAllNote(): LiveData<List<NoteModel>> = noteRepository.getAllNote()
 
-    class NoteViewModelFactory(private val application : Application) : ViewModelProvider.Factory{
+    class NoteViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if(modelClass.isAssignableFrom(NoteViewModel::class.java)){
+            if (modelClass.isAssignableFrom(NoteViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return NoteViewModel(application) as T
             }
